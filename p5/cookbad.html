@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>cookbad</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.5/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.5/addons/p5.dom.js"></script>
+    <script src="sketch.js"></script>
+    <style type="text/css">
+        *{
+        	padding: 0;
+            margin: 0;
+        }
+
+        body{
+        	background: rgb(247,243,232);
+        	font-family: "Hiragino Maru Gothic W4 JIS2004", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 500;
+        	color: rgb(53,53,53);
+        }
+
+        h2{
+        	color: rgb(220, 209, 186);
+        }
+
+        #container{
+        	width: 970px;
+        	position: relative;
+        	background: white;
+        	display: block;
+        	margin: 0 auto;
+        }
+
+        header{
+        	width: 925px;
+        	height: 95px;
+        	margin: 22.5px;
+        	padding-top: 10px;
+        }
+
+        header img{
+        	height: 80px;
+        	padding: 10px;
+        }
+
+        main{
+        	height: 250px;
+        }
+
+        .dish-image{
+        	width: 474px;
+        	float: left;
+        }
+
+        .dish-image img{
+        	max-width: 100%;
+        	max-height: 250px;
+        	display: block;
+        	margin: 0 auto;
+        }
+
+        .ingredients{
+        	width: 474px;
+        	float: right;
+        }
+
+        .ingredients li{
+        	margin: 0 0 0 35px;
+        }
+
+        .description{
+        	margin: 22.5px;
+        	margin-top: 30px;
+        	padding-bottom: 30px;
+        	width: 925px;
+        }
+
+        .description h2{
+        	padding: 0 0 0 20px;
+        }
+
+        .description li{
+        	margin: 0 0 0 55px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <img src="./../images/cookbad-logo.png">
+        </header>
+
+        <main>
+        	<div class="dish-image" >
+            	<!--ここに料理の画像を入れてね-->
+                <img src="../out.png" >
+            </div>
+
+            <div class="ingredients">
+            	<h2>材料</h2>
+                <ul>
+                    {% for m in materials %}
+                        <li>{{ m.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </main>
+
+        <div class="description" >
+            <h2>調理法</h2>
+            <ol class="cooking">
+                {% for step in recipi %}
+                    <li>{{ step.dsc }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
