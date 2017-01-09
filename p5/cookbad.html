@@ -4,6 +4,7 @@
     <title>cookbad</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.5/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.5/addons/p5.dom.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="sketch.js"></script>
     <style type="text/css">
         *{
@@ -96,20 +97,14 @@
 
             <div class="ingredients">
             	<h2>材料</h2>
-                <ul>
-                    {% for m in materials %}
-                        <li>{{ m.name }}</li>
-                    {% endfor %}
+                <ul id="foodstuff_list">
                 </ul>
             </div>
         </main>
 
         <div class="description" >
             <h2>調理法</h2>
-            <ol class="cooking">
-                {% for step in recipi %}
-                    <li>{{ step.dsc }}</li>
-                {% endfor %}
+            <ol id="cooking">
             </ol>
         </div>
     </div>
