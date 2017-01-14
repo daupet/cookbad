@@ -1,6 +1,10 @@
 var canvas;
 var dish; // 完成画像を描画するためのグラフィックバッファ
 
+var cooking_methods_list;   // 可能な調理法のリスト
+var foodstuffs_list;        // 可能な食材のリスト
+
+
 function setup()
 {
     // キャンバスを作成する
@@ -32,4 +36,96 @@ function setup()
 function draw()
 {
 
+}
+
+
+function generate_recipi(foodstuffs)
+{
+    "use strict";
+
+    rcp = new Recipi();
+    cooking = generate_cookings(rcp);
+}
+
+
+/**
+ * レシピの材料一覧を生成する。
+ */
+function generate_foodstuffs(n_materials)
+{
+    "use strict";
+
+    //import random
+    //import copy
+
+    if (n_materials <= foodstuffs_list)
+    {
+        return Object.assign({}, random.sample(ingredients_list, n_materials));
+    }
+    else
+    {
+        return Object.assign({}, random.sample(ingredients_list, len(ingredients_list)));
+    }
+}
+
+
+/**
+ * 与えられたレシピに，次の調理手順を追加する。
+ */
+function add_cooking(recipi)
+{
+    "use strict";
+
+    // 調理法リストからランダムにひとつを選んでコピーする
+    method = Object.assign({}, random.choice(cooking_methods_list));
+
+    // 食材数が十分にあるなら，選ばれた調理法に食材を当てはめて調理する
+    if (method.n_ps <= recipi.foodstuffs.length)
+    {
+        method.ps = random.sample(recipi.ingredients, method.n_ps);
+        method.cook(recipi);
+        recipi.steps.append(method);
+    }
+}
+
+
+/**
+ * ファイルからすべての食材リストを生成する
+ */
+function load_foodstuffs()
+{
+    "use strict";
+
+    /*
+    import csv
+    #potato = recipi.Ingredient('じゃがいも', cv2.imread("img/cut_vegetable_potato.png", cv2.IMREAD_UNCHANGED))
+
+    with open('ingredients.dat', 'r', encoding='utf8') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            print(row)
+            if len(row) == 2:
+                ingredients_list.append(recipi.Ingredient(row[0], cv2.imread('img\\'+row[1], cv2.IMREAD_UNCHANGED)))
+    */
+}
+
+
+/**
+ * ファイルからすべての調理法のリストを生成する
+ *
+ */
+function load_cookingmethods()
+{
+    "use strict";
+
+    /*
+    import csv
+
+    with open('cooking_methods.dat', 'r', encoding='utf8') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            print(row)
+            if len(row) == 3:
+                cooking_methods_list.append(recipi.CookingMethod('_', getattr(methods, row[1]), row[0], int(row[2])))
+    */
 }
