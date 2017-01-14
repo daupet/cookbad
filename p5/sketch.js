@@ -21,16 +21,16 @@ function setup()
     dish.rect(0, 0, width, height);
 
     // jQuery でHTMLを書き換えるテスト
-    foodstuffs = ["肉", "野菜"]
-    recipi = ["野菜を切る。", "肉を焼く。", "野菜を焼く。", "皿に盛る。"];
+    const foodstuffs = ["肉", "野菜"];
+    const recipi = ["野菜を切る。", "肉を焼く。", "野菜を焼く。", "皿に盛る。"];
 
     for (var i=0; i<foodstuffs.length; i++)
     {
-        $("#foodstuff_list").append("<li>" + foodstuffs[i] + "</li>")
+        $("#foodstuff_list").append("<li>" + foodstuffs[i] + "</li>");
     }
     for (var i=0; i<recipi.length; i++)
     {
-        $("#cooking").append("<li>" + recipi[i] + "</li>")
+        $("#cooking").append("<li>" + recipi[i] + "</li>");
     }
 }
 
