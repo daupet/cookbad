@@ -7,6 +7,8 @@ var foodstuffs_list;        // 可能な食材のリスト
 
 function setup()
 {
+    "use strict";
+
     // キャンバスを作成する
     canvas = createCanvas(400, 250);
     canvas.id("p5_canvas");
@@ -35,6 +37,8 @@ function setup()
 
 function draw()
 {
+    "use strict";
+
 
 }
 
